@@ -16,7 +16,7 @@ public class draw extends JPanel {
     Graphics2D g2 = (Graphics2D) g;
     g2.translate(getWidth() / 2, getHeight() / 2);
     g2.setColor(Color.black);
-    Cube cube = new Cube(100, 100);
+    cube cube = new cube(100, 100);
 
     for (int i = 0; i < cube.cubeEdges.length; i++) {
       for (int j = 0; j < 3; j++) {

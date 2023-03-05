@@ -1,11 +1,11 @@
 package Renderer;
 
-public class Cube extends draw {
+public class cube extends draw {
 
   int size = 100;
   int pos;
 
-  Cube(int cube_size, int position) {
+  cube(int cube_size, int position) {
     super();
     pos = position;
     size = cube_size;
