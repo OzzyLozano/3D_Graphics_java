@@ -75,7 +75,7 @@ class CubePanel extends JPanel {
   }
 
   public double getDepth(double x, double y, double z, double cameraX, double cameraY, double cameraZ) {
-    // Calcular la distancia desde el punto a la cámara
+    // Calcular la distancia desde el vertice a la cámara
     double dx = x - cameraX;
     double dy = y - cameraY;
     double dz = z - cameraZ;
