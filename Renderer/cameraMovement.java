@@ -10,17 +10,6 @@ public class cameraMovement extends JPanel implements KeyListener {
   public static double viewFrom[] = { 10, 10, 10 };
   public static double viewTo[] = { 5, 0, 0 };
 
-  static int focalLength = 120;
-
-  int[] projection(int x, int y, int z) {
-    int[] xy = new int[2];
-    xy[0] = x - (z / 3);
-    xy[1] = y - (z / 3);
-    // xy[0] = x * focalLength / (focalLength + z + 128);
-    // xy[1] = y * focalLength / (focalLength + z + 128);
-    return xy;
-  }
-
   cameraMovement() {
     addKeyListener(this);
   }
