@@ -3,10 +3,9 @@ package Renderer;
 public class cube extends draw {
 
   int size = 100;
-  int pos;
+  int pos = 100;
 
   cube(int cube_size, int position) {
-    super();
     pos = position;
     size = cube_size;
   }

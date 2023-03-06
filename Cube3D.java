@@ -1,4 +1,3 @@
-package Renderer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -64,13 +63,6 @@ class CubePanel extends JPanel {
       int[] xy1 = project(x1, y1, z1);
       int[] xy2 = project(x2, y2, z2);
       g2.drawLine(xy1[0], xy1[1], xy2[0], xy2[1]);
-      System.out.println(getDepth(
-          cubeVertices[edge[0]][0],
-          cubeVertices[edge[0]][1],
-          cubeVertices[edge[0]][2],
-          cameraMovement.viewFrom[0],
-          cameraMovement.viewFrom[1],
-          cameraMovement.viewFrom[2]));
     }
   }
 
