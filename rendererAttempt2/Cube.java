@@ -3,31 +3,34 @@ package rendererAttempt2;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.Color;
 
 import javax.swing.JPanel;
 
 public class Cube extends JPanel {
 
-  public int size, position;
+  public int size, x_pos, y_pos, z_pos;
   public int focalLength = 120;
+  public boolean cubeDestroyed = false;
 
   int[][] cubeVertices;
   int[][] cubeEdges;
 
-  Cube(int size, int position) {
+  Cube(int size, int x_pos, int y_pos, int z_pos) {
     setSize(size);
-    setPosition(position);
+    setX_pos(x_pos);
+    setY_pos(y_pos);
+    setZ_pos(z_pos);
+    setLayout(null);
 
     int[][] cubeVertices = {
-        { position + 0, position + 0, position + 0 },
-        { position + 0, position + 0, position + size },
-        { position + 0, position + size, position + 0 },
-        { position + 0, position + size, position + size },
-        { position + size, position + 0, position + 0 },
-        { position + size, position + 0, position + size },
-        { position + size, position + size, position + 0 },
-        { position + size, position + size, position + size }
+        { x_pos - size / 2, -size / 2 - y_pos, 0 - z_pos },
+        { x_pos - size / 2, -size / 2 - y_pos, size / 2 - z_pos },
+        { x_pos - size / 2, size / 2 - y_pos, 0 - z_pos },
+        { x_pos - size / 2, size / 2 - y_pos, size / 2 - z_pos },
+        { x_pos + size / 2, -size / 2 - y_pos, 0 - z_pos },
+        { x_pos + size / 2, -size / 2 - y_pos, size / 2 - z_pos },
+        { x_pos + size / 2, size / 2 - y_pos, 0 - z_pos },
+        { x_pos + size / 2, size / 2 - y_pos, size / 2 - z_pos }
     };
     int[][] cubeEdges = {
         { 0, 1 },
@@ -45,15 +48,22 @@ public class Cube extends JPanel {
     };
     this.cubeVertices = cubeVertices;
     this.cubeEdges = cubeEdges;
-    setFocusable(true);
   }
 
   public void setSize(int size) {
     this.size = size;
   }
 
-  public void setPosition(int position) {
-    this.position = position;
+  public void setX_pos(int x_pos) {
+    this.x_pos = x_pos;
+  }
+
+  public void setY_pos(int y_pos) {
+    this.y_pos = y_pos;
+  }
+
+  public void setZ_pos(int z_pos) {
+    this.z_pos = z_pos;
   }
 
   @Override
@@ -65,7 +75,6 @@ public class Cube extends JPanel {
         RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
     g2.translate(getWidth() / 2, getHeight() / 2);
     g2.setRenderingHints(rh);
-    g2.setColor(Color.black);
 
     for (int[] edge : cubeEdges) {
       int x1 = cubeVertices[edge[0]][0];
@@ -84,8 +93,8 @@ public class Cube extends JPanel {
 
   int[] projection(int x, int y, int z) {
     int[] xy = new int[2];
-    xy[0] = x * focalLength / (focalLength + z + 128);
-    xy[1] = y * focalLength / (focalLength + z + 128);
+    xy[0] = x * focalLength / (focalLength + z);
+    xy[1] = y * focalLength / (focalLength + z);
     return xy;
   }
 

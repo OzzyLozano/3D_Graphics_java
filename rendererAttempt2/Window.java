@@ -11,6 +11,7 @@ public class Window extends JFrame {
     setTitle("attempt 2");
     setSize(WIDTH, HEIGHT);
     setVisible(true);
+
   }
 
 }
